@@ -1,17 +1,22 @@
 import React, { FormEvent } from "react";
-export const ProjectLogin = () => {
+// import { login, register } from "../../auth-provider";
+import { useAuth } from "../context/auth-context";
+
+export const ProjectRegister = () => {
+  const { register, user } = useAuth();
   const submitFn = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(event);
-    const userName = (event.currentTarget.elements[0] as HTMLInputElement)
+    const username = (event.currentTarget.elements[0] as HTMLInputElement)
       .value;
-    const passWord = (event.currentTarget.elements[1] as HTMLInputElement)
+    const password = (event.currentTarget.elements[1] as HTMLInputElement)
       .value;
-    console.log(userName, passWord);
+    register({ username, password });
   };
   return (
     <form onSubmit={submitFn}>
       <div>
+        <div>{user ? "用户名：" + user.name : ""}</div>
         <label htmlFor={"userName"}>账号</label>
         <input type={"text"} id={"userName"} />
       </div>
@@ -19,7 +24,7 @@ export const ProjectLogin = () => {
         <label htmlFor={"password"}>密码</label>
         <input type={"password"} id={"password"} />
       </div>
-      <button type={"submit"}>登录</button>
+      <button type={"submit"}>注册</button>
     </form>
   );
 };

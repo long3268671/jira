@@ -1,16 +1,17 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import { ProjectList } from "./sereens/project-list";
-import { TsReactTest } from "./try-use-array";
-import { ProjectLogin } from "./sereens/login/login";
+
+import { AppProviders } from "./context";
+import { Home } from "./home";
 
 function App() {
   return (
     <div className="App">
       {/*<ProjectList />*/}
       {/*<TsReactTest />*/}
-      <ProjectLogin />
+      <AppProviders>
+        <Home />
+      </AppProviders>
     </div>
   );
 }

@@ -8,4 +8,5 @@ export interface project {
 export interface user {
   id: number;
   name: string;
+  token: string;
 }
